@@ -22,7 +22,8 @@ defmodule AirTrafficControl.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:gen_state_machine, "~> 2.0.1"}
+      {:gen_state_machine, "~> 2.0.1"},
+      {:distillery, "~> 1.5"}
     ]
   end
 end
