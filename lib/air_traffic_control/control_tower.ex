@@ -54,7 +54,7 @@ defmodule AirTrafficControl.ControlTower do
     :timer.sleep(400)
     IO.puts("#{airport} is freeing up the runway #{inspect landing_strip}")
     landing_strip = %{landing_strip | free: true}
-    Plane.rest(plane)
+    # Plane.rest(plane)
     {:reply, :ok, Map.put(state, landing_strip[:id], landing_strip)}
   end
 
