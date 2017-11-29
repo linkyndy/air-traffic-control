@@ -2,11 +2,11 @@ defmodule AirTrafficControl.ControlTowerSupervisor do
   use Supervisor
 
   def start_link(opts) do
-    Supervisor.start_link(__MODULE__, opts, name: __MODULE__)
+    Supervisor.start_link(__MODULE__, opts, name: {:global, __MODULE__})
   end
 
   def start_control_tower(name) do
-    Supervisor.start_child(__MODULE__, [name])
+    Supervisor.start_child({:global, __MODULE__}, [name])
   end
 
   def init(_opts) do

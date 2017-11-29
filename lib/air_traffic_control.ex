@@ -2,6 +2,14 @@ defmodule AirTrafficControl do
   use Application
 
   def start(:normal, args) do
+    start_node(args)
+  end
+  def start({:takeover, other_node}, args) do
+    IO.puts("[Takeover] #{inspect other_node}")
+    start_node(args)
+  end
+
+  def start_node(args) do
     supervisor = AirTrafficControl.ControlTowerSupervisor.start_link(args)
     airports = Application.get_env(:air_traffic_control, :airports)
 

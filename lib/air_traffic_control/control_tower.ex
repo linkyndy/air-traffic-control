@@ -4,17 +4,17 @@ defmodule AirTrafficControl.ControlTower do
   alias AirTrafficControl.Plane
 
   def start_link(name) do
-    GenServer.start_link(__MODULE__, name, name: name)
+    GenServer.start_link(__MODULE__, name, name: {:global, name})
   end
   def start_link(_, name), do: start_link(name)
 
-  def status(pid), do: GenServer.call(pid, :status)
+  def status(pid), do: GenServer.call({:global, pid}, :status)
 
-  def open_landing_strip(pid), do: GenServer.call(pid, :open_landing_strip)
+  def open_landing_strip(pid), do: GenServer.call({:global, pid}, :open_landing_strip)
 
-  def permission_to_land(pid, plane), do: GenServer.call(pid, {:permission_to_land, plane})
+  def permission_to_land(pid, plane), do: GenServer.call({:global, pid}, {:permission_to_land, plane})
 
-  def land(pid, plane, landing_strip), do: GenServer.call(pid, {:land, plane, landing_strip})
+  def land(pid, plane, landing_strip), do: GenServer.call({:global, pid}, {:land, plane, landing_strip})
 
   # Internal callbacks for GenServer
 
