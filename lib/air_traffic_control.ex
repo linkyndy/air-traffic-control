@@ -1,18 +1,11 @@
 defmodule AirTrafficControl do
-  @moduledoc """
-  Documentation for AirTrafficControl.
-  """
+  use Application
 
-  @doc """
-  Hello world.
+  def start(:normal, args) do
+    :ok
+  end
 
-  ## Examples
-
-      iex> AirTrafficControl.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def stop(_) do
+    :ok
   end
 end
